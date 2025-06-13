@@ -18,7 +18,7 @@
 
 ## Borg Backup/Restore
 
-* [Page 2](borg-backup-restore/page-2.md)
+* [Borg Backup Setup](borg-backup-restore/borg-backup-setup.md)
 
 ## WireGuard Configuration
 
