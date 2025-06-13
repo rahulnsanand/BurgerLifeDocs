@@ -1,5 +1,5 @@
 ---
-icon: globe-pointer
+icon: browser
 ---
 
 # Applications Overview
