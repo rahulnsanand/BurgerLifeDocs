@@ -10,38 +10,58 @@ This section provides detailed information about the deployment and specificatio
 
 ***
 
-**1. burgermaster**\
-A high-performance server equipped to handle intensive processing and storage tasks.
+#### System Overview
+
+<table><thead><tr><th width="167.5999755859375">Host Name</th><th width="113">LAN IP</th><th width="141.800048828125">WireGuard IP</th></tr></thead><tbody><tr><td>burgermaster</td><td>10.10.10.10</td><td>10.21.22.10</td></tr><tr><td>burgermanager</td><td>10.10.10.20</td><td>10.21.22.20</td></tr><tr><td>burgerworker</td><td>10.10.10.15</td><td>10.21.22.15</td></tr><tr><td>workermanager</td><td>10.10.10.16</td><td>10.21.22.16</td></tr><tr><td>workerslave</td><td>10.10.10.17</td><td>10.21.22.17</td></tr></tbody></table>
+
+***
+
+**1. burgermaster**
 
 * **IP Address:** 10.10.10.10
-* **Processor:** Intel i7 - Equipped for demanding multitasking and processing applications.
-* **Memory:** 16GB RAM - Ensures smooth execution of large applications and improved multitasking performance.
+* **Processor:** Intel i7
+* **Memory:** 16GB RAM
 * **Storage:**
-  * **Primary:** 500GB NVMe SSD - Offers high speed and reliability for frequently accessed data.
-  * **Secondary:** 4TB HDD - Provides substantial storage for backups and archival data.
-* **Location:** Bangalore – Optimally placed for quick access and reduced latency to local clients.
-* **Functionality:** Ideal for hosting critical applications and managing large-scale data operations.
+  * **Primary:** 500GB NVMe SSD
+  * **Secondary:** 4TB HDD
+* **Location:** Bangalore, KA
 
-**2. burgermanager**\
-A versatile server, serving as a bridge for operations in geographically distinct locations.
+**2. burgermanager**
 
 * **IP Address:** 10.10.10.20
-* **Processor:** Intel i5 - Balanced for everyday computing needs and energy efficiency.
-* **Memory:** 16GB RAM - Supports effective multitasking and adequate performance for common applications.
+* **Processor:** Intel i5
+* **Memory:** 16GB RAM
 * **Storage:**
-  * **Primary:** 500GB NVMe SSD - Fast data retrieval and application loading.
-  * **Secondary:** 4TB HDD - Ample space for media, documents, and archiving.
-* **Location:** Hosur – Expands operational capacity with geographical redundancy.
-* **Functionality:** Suited for general-purpose roles, including hosting services and network management.
+  * **Primary:** 500GB NVMe SSD
+  * **Secondary:** 4TB HDD
+* **Location:** Hosur, TN
 
-**3. burgerworker**\
-Designed for lightweight operations, suitable for specific tasks that do not require high throughput.
+**3. burgerworker (HA-PiCluster | WorkerCluster)**
 
-* **IP Address:** 10.10.10.15
-* **Processor:** Raspberry Pi 5 - Energy-efficient and cost-effective for small-scale applications.
-* **Memory:** 8GB RAM - Sufficient for running lightweight applications and services.
+* **IP Address:** 10.10.10.15 | **VIP:** 10.10.10.5
+* **Processor:** Raspberry Pi 5
+* **Memory:** 8GB RAM
 * **Storage:**
-  * **Primary:** 500GB NVMe SSD - Ensures quick access to frequently used applications.
-* **Location:** Bangalore – Aiding local operations with reliable, low-power processing.
-* **Functionality:** Ideal for test environments, development tasks, or acting as a node in data-centric computations.
+  * **Primary:** 500GB NVMe SSD
+* **Location:** Bangalore
+
+**4. workermanager (HA-PiCluster | WorkerCluster)**
+
+* **IP Address:** 10.10.10.16
+* **Processor:** Raspberry Pi 5
+* **Memory:** 4GB RAM
+* **Storage:**
+  * **Primary:** 64GB SD Card
+* **Location:** Bangalore
+
+**5. workerslave (HA-PiCluster | WorkerCluster)**
+
+* **IP Address:** 10.10.10.17
+* **Processor:** Raspberry Pi 5
+* **Memory:** 4GB RAM
+* **Storage:**
+  * **Primary:** 64 GB SD Card
+* **Location:** Bangalore
+
+
 
