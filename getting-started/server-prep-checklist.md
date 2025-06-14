@@ -12,6 +12,7 @@ icon: square-check
 * [ ] Configure Automount Settings
 * [ ] Install Required Packages
 * [ ] Install Docker
+* [ ] Exclude Docker from APT Updates
 * [ ] Install Wireguard and Configure it for Mesh Network
 * [ ] Install KeepAlived on Worker Cluster Nodes and Configure a VIP
 * [ ] Install MariaDB on all nodes
