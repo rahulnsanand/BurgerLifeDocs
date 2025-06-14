@@ -23,6 +23,7 @@ description: >-
 
 ```bash
 sudo apt update
-sudo apt install curl git wget sudo nano lsof tar rsync locate
+sudo apt upgrade -y
+sudo apt install curl git wget sudo nano lsof tar rsync locate -y
 ```
 

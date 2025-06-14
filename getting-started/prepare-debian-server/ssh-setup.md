@@ -12,7 +12,7 @@ First, ensure your package lists and installed packages are up to date:
 
 ```bash
 sudo apt update
-sudo apt upgrade
+sudo apt upgrade -y
 ```
 
 #### 2. **Install the OpenSSH Server Package**
@@ -20,7 +20,7 @@ sudo apt upgrade
 Install the SSH server package:
 
 ```bash
-sudo apt install openssh-server
+sudo apt install openssh-server -y
 ```
 
 #### 3. **Check SSH Service Status**
