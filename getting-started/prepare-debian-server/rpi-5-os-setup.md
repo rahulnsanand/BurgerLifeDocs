@@ -187,8 +187,9 @@ After successfully cloning, you can switch to booting directly from the NVMe.
    1. If you are using a **non-HAT+ NVMe adapter** (i.e., not an official Raspberry Pi HAT+), you might need to explicitly enable PCIe device probing for the NVMe to be detected as a boot option.
 5. **Add this line to the file:**
 
-<pre class="language-bash"><code class="lang-bash"><strong>PCIE_PROBE=1
-</strong></code></pre>
+```bash
+PCIE_PROBE=1
+```
 
 If you're using an official HAT+, this line might not be strictly necessary, but it doesn't hurt to include it to ensure compatibility.
 
@@ -196,11 +197,38 @@ If you're using an official HAT+, this line might not be strictly necessary, but
    1. Press `Ctrl` + `O` (to Write Out the changes).
    2. Press `Enter` to confirm the filename.
    3. Press `Ctrl` + `X` (to eXit the editor).
-7. **Remove the SD Card:**
-   1. Once the Pi is completely off (no lights, or stable red light), remove the SD card.
-   2. **This is essential to force the Pi to try booting from the NVMe.**
-8. **Reboot:**
-   1. The changes will take effect after a reboot:
+7.  Enabling PCIe Gen 3.0 Speeds for NVMe on Raspberry Pi 5
+
+    **Access `config.txt`:** Open a terminal on your Raspberry Pi 5 (via SSH or directly). You'll need root privileges to edit this file.
+
+    Bash
+
+    ```
+    sudo nano /boot/firmware/config.txt
+    ```
+8.  **Add the PCIe Gen 3.0 Parameter:** Scroll to the end of the `config.txt` file (or find a suitable place, like under other `dtparam` lines). Add the following line:
+
+    ```
+    dtparam=pciex1_gen=3
+    ```
+
+    It should look something like this in the file (other lines will be present):
+
+    ```
+    # ... other existing configurations ...
+
+    # Enable PCIe Gen 3.0 for NVMe (unsupported, test for stability)
+    dtparam=pciex1_gen=3
+    ```
+9. **Save and Exit:**
+   * Press `Ctrl` + `O` (to Write Out) to save the file.
+   * Press `Enter` to confirm the filename.
+   * Press `Ctrl` + `X` (to eXit) the `nano` editor.
+10. **Remove the SD Card:**
+    1. Once the Pi is completely off (no lights, or stable red light), remove the SD card.
+    2. **This is essential to force the Pi to try booting from the NVMe.**
+11. **Reboot:**
+    1. The changes will take effect after a reboot:
 
 ```bash
 sudo reboot
