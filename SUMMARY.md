@@ -5,6 +5,7 @@
 ## Getting Started
 
 * [Quick Reference](getting-started/quick-reference.md)
+* [Server Prep Checklist](getting-started/server-prep-checklist.md)
 * [Applications Overview](getting-started/applications-overview/README.md)
   * [Linux Installations](getting-started/applications-overview/linux-installations.md)
   * [Docker Containers](getting-started/applications-overview/docker-containers.md)
