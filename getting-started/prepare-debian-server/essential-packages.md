@@ -18,12 +18,14 @@ description: >-
 7. **tar** — Archive utility.
 8. **rsync** — Fast file transfer and synchronization tool.
 9. **locate** — Quickly find files by name.
+10. **iptables -** To Help with Wireguard and set some rules
+11. **python3.11-venv**
 
 #### Install Command
 
 ```bash
 sudo apt update
 sudo apt upgrade -y
-sudo apt install curl git wget sudo nano lsof tar rsync locate -y
+sudo apt install curl git wget sudo nano lsof tar rsync locate python3.11-venv iptables -y
 ```
 

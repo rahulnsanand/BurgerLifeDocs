@@ -7,17 +7,20 @@ icon: square-check
 
 # Server Prep Checklist
 
-* [ ] Clean Install Debian OS on all Server Nodes
-* [ ] Configure GRUB Settings
-* [ ] Configure Automount Settings
-* [ ] Install Required Packages
-* [ ] Install Docker
-* [ ] Exclude Docker from APT Updates
-* [ ] Install Wireguard and Configure it for Mesh Network
-* [ ] Install KeepAlived on Worker Cluster Nodes and Configure a VIP
-* [ ] Install MariaDB on all nodes
-* [ ] Configure Galera Cluster on all nodes
-* [ ] Install NGINX with MariaDB as Data Source and Configure Reverse Proxy on BurgerWorker
-* [ ] Configure APP DATA sync between the worker cluster nodes
-* [ ] After the initial sync, install NGINX on other worker nodes
+* [x] \[All Nodes] Clean Install Debian OS
+* [x] \[Master/Manager Nodes] Configure GRUB Settings
+* [x] \[Master/ManagerNodes] Configure Automount Settings
+* [x] \[All Nodes] Install Required Packages
+* [x] \[All Nodes] Install Docker
+* [x] \[All Nodes] Exclude Docker from APT Updates
+* [x] \[All Nodes] Install Wireguard and Configure it for Mesh Network
+* [x] \[Worker Cluster] Install KeepAlived and Configure a VIP
+* [x] \[All Nodes] Install MariaDB
+* [x] \[All Nodes] Configure Galera Cluster on all nodes
+* [x] \[Worker Cluster] Install NGINX with MariaDB as Data Source and Configure Reverse Proxy
+* [x] \[Worker Cluster] After the initial sync, install NGINX
+* [x] \[Worker Cluster] Configure APP DATA sync
+*
+*
+*
 *

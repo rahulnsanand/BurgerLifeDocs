@@ -2,7 +2,7 @@
 icon: network-wired
 ---
 
-# Initial Setup
+# WireGuard Configuration
 
 #### **Step 1: Install WireGuard on All Nodes**
 
@@ -62,87 +62,32 @@ Now, you'll create the WireGuard configuration file (`/etc/wireguard/wg0.conf`) 
 sudo nano /etc/wireguard/wg0.conf
 ```
 
-Paste the following, replacing placeholders:
+Paste the following, replacing placeholders (BELOW IS EXAMPLE ONLY):
 
 ```bash
 [Interface]
 PrivateKey = node1_private_key_string
 Address = 10.0.0.1/24
-ListenPort = 51820 # Standard WireGuard port
-# You can add PostUp/PostDown commands here for routing if needed, but for a simple mesh, not strictly necessary unless you want full network routing.
+ListenPort = 51820 
+PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o enp2s0 -j MASQUERADE
+PreDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o enp2s0 -j MASQUERADE
 
 [Peer] # Peer 1: node2
 PublicKey = node2_public_key_string
 AllowedIPs = 10.0.0.2/32, 192.168.1.102/32 # Allow traffic to node2's WG IP and LAN IP
-Endpoint = 192.168.1.102:51820 # Use node2's LAN IP
+Endpoint = hosur-vpn.asherslife.in:51820 # For Hosur Based Nodes
 PersistentKeepalive = 25 # Keep the tunnel active
 
 [Peer] # Peer 2: node3
 PublicKey = node3_public_key_string
 AllowedIPs = 10.0.0.3/32, 192.168.1.103/32 # Allow traffic to node3's WG IP and LAN IP
-Endpoint = 192.168.1.103:51820 # Use node3's LAN IP
+Endpoint = vpn.asherslife.in:51820 # For Bangalore Based Nodes
 PersistentKeepalive = 25 # Keep the tunnel active
 ```
 
 Save and exit (`Ctrl+O`, `Enter`, `Ctrl+X`).
 
-**Configuration for `node2` (`192.168.1.102`)**
-
-```bash
-sudo nano /etc/wireguard/wg0.conf
-```
-
-Paste the following, replacing placeholders:
-
-```bash
-[Interface]
-PrivateKey = node2_private_key_string
-Address = 10.0.0.2/24
-ListenPort = 51820
-
-[Peer] # Peer 1: node1
-PublicKey = node1_public_key_string
-AllowedIPs = 10.0.0.1/32, 192.168.1.101/32
-Endpoint = 192.168.1.101:51820
-PersistentKeepalive = 25
-
-[Peer] # Peer 2: node3
-PublicKey = node3_public_key_string
-AllowedIPs = 10.0.0.3/32, 192.168.1.103/32
-Endpoint = 192.168.1.103:51820
-PersistentKeepalive = 25
-```
-
-Save and exit.
-
-**Configuration for `node3` (`192.168.1.103`)**
-
-```bash
-sudo nano /etc/wireguard/wg0.conf
-```
-
-Paste the following, replacing placeholders:
-
-```bash
-[Interface]
-PrivateKey = node3_private_key_string
-Address = 10.0.0.3/24
-ListenPort = 51820
-
-[Peer] # Peer 1: node1
-PublicKey = node1_public_key_string
-AllowedIPs = 10.0.0.1/32, 192.168.1.101/32
-Endpoint = 192.168.1.101:51820
-PersistentKeepalive = 25
-
-[Peer] # Peer 2: node2
-PublicKey = node2_public_key_string
-AllowedIPs = 10.0.0.2/32, 192.168.1.102/32
-Endpoint = 192.168.1.102:51820
-PersistentKeepalive = 25
-```
-
-Save and exit.
+**Configuration for all other nodes as well**
 
 ***
 
@@ -160,7 +105,13 @@ Save and exit.
     ```bash
     sudo systemctl enable wg-quick@wg0
     ```
-3.  **Check WireGuard status:**
+3.  **To Restart WireGuard Service:**\
+
+
+    ```bash
+    sudo systemctl restart wg-quick@wg0
+    ```
+4.  **Check WireGuard status:**
 
     ```bash
     sudo wg

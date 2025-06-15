@@ -1,2 +1,0 @@
-# Automate VPN Mesh
-

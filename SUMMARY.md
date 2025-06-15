@@ -6,9 +6,8 @@
 
 * [Quick Reference](getting-started/quick-reference.md)
 * [Server Prep Checklist](getting-started/server-prep-checklist.md)
-* [Applications Overview](getting-started/applications-overview/README.md)
-  * [Linux Installations](getting-started/applications-overview/linux-installations.md)
-  * [Docker Containers](getting-started/applications-overview/docker-containers.md)
+* [Linux Installations](getting-started/linux-installations.md)
+* [Docker Containers](getting-started/docker-containers.md)
 * [Backup Plan](getting-started/backup-plan/README.md)
   * [Scenario 1 - Normal Usage](getting-started/backup-plan/scenario-1-normal-usage.md)
   * [Scenario 2 - Master Server Down](getting-started/backup-plan/scenario-2-master-server-down.md)
@@ -25,44 +24,45 @@
   * [Essential Packages](getting-started/prepare-debian-server/essential-packages.md)
   * [SSH Setup](getting-started/prepare-debian-server/ssh-setup.md)
   * [BurgerLife Automation Script](getting-started/prepare-debian-server/burgerlife-automation-script.md)
+* [Firewall/Network Rules](getting-started/firewall-network-rules.md)
 
-## Borg Backup/Restore
+## Network Configuration
 
-* [Borg Backup Setup](borg-backup-restore/borg-backup-setup.md)
-
-## WireGuard Configuration
-
-* [Initial Setup](wireguard-configuration/openapi.md)
-* [Peer Configuration](wireguard-configuration/integrations/README.md)
-  * [Master Peer Configuration](wireguard-configuration/integrations/master-peer-configuration.md)
-  * [Manager Peer Configuration](wireguard-configuration/integrations/manager-peer-configuration.md)
-  * [Worker Peer Configuration](wireguard-configuration/integrations/worker-peer-configuration.md)
-* [Firewall/Network Rules](wireguard-configuration/firewall-network-rules/README.md)
-  * [Master Network Rules](wireguard-configuration/firewall-network-rules/master-network-rules.md)
-  * [Manager Network Rules](wireguard-configuration/firewall-network-rules/manager-network-rules.md)
-  * [Worker Network Rules](wireguard-configuration/firewall-network-rules/worker-network-rules.md)
-* [Automate VPN Mesh](wireguard-configuration/automate-vpn-mesh.md)
+* [Setup DDNS](network-configuration/setup-ddns.md)
+* [WireGuard Configuration](network-configuration/openapi.md)
+* [Cloudflared Configuration](network-configuration/openapi-1.md)
 
 ## Syncthing
 
-* [Page 1](syncthing/page-1.md)
+* [SyncThing Configuration](syncthing/syncthing-configuration.md)
 
 ## MariaDB
 
-* [Page 3](mariadb/page-3.md)
+* [Setup MariaDB](mariadb/setup-mariadb.md)
+* [Setup Galera Cluster](mariadb/setup-galera-cluster.md)
+* [User burger Creation](mariadb/user-burger-creation.md)
 
-## PostGreSQL
+## Docker
 
-* [Page 4](postgresql/page-4.md)
+* [Docker Setup](docker/docker-setup.md)
+* [Docker Swarm Setup](docker/docker-swarm-setup.md)
+* [Portainer Setup](docker/portainer-setup.md)
 
-## DDNS
+## KeepAlived
 
-* [Page 6](ddns/page-6.md)
+* [Configure KeepAlive](keepalived/configure-keepalive.md)
 
-## NGINX Proxy Manager
+## PostgreSQL
 
-* [Page 5](nginx-proxy-manager/page-5.md)
+* [Setup PostgreSQL](postgresql/setup-postgresql.md)
 
-## Group 5
+## BurgerLife API
 
-* [Page 7](group-5/page-7.md)
+* [BurgerLifeAPI Setup](burgerlife-api/burgerlifeapi-setup.md)
+
+## Docker Applications
+
+* [Nginx Proxy Manager](docker-applications/nginx-proxy-manager.md)
+* [VaultWarden](docker-applications/vaultwarden.md)
+* [File Browser](docker-applications/file-browser.md)
+* [Copy of Page 1](docker-applications/copy-of-page-1.md)
