@@ -139,7 +139,7 @@ After the script completes, MariaDB Server should be running and listening on al
 
     Bash
 
-    ```
+    ```bash
     sudo systemctl status mariadb
     ```
 
@@ -148,7 +148,7 @@ After the script completes, MariaDB Server should be running and listening on al
 
     Bash
 
-    ```
+    ```bash
     sudo ss -tuln | grep 3306
     ```
 

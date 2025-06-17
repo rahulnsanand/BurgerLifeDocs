@@ -25,8 +25,8 @@ nano /etc/keepalived/scripts/notify_master.sh
 set -euo pipefail
 
 LOGFILE="/var/log/keepalived_failback.log"
-MANAGER_IP="10.21.22.16" # Replace with Manager's Wireguard IP
-MASTER_IP="10.21.22.15"   # Replace with Master's Wireguard IP
+MANAGER_IP="10.21.22.20" # Replace with Manager's Wireguard IP
+MASTER_IP="10.21.22.10"   # Replace with Master's Wireguard IP
 MANAGER_USER="root"        # SSH user on Manager
 MASTER_APP_RESTART_SCRIPT="/usr/local/bin/master_restart_apps.sh" # Script to start apps on Master
 SYNC_COMPLETE_FILE="/tmp/rsync_complete_flag" # Temporary flag file on Manager

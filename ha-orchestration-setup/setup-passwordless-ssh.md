@@ -49,7 +49,7 @@ ssh-keygen
 * Do Not Create Passphrase
 
 ```bash
-ssh-copy-id root@10.21.22.15
+ssh-copy-id root@10.21.22.10
 ```
 
 #### On Master:&#x20;
@@ -62,12 +62,12 @@ ssh-keygen
 * Do Not Create Passphrase
 
 ```bash
-ssh-copy-id root@10.21.22.16
+ssh-copy-id root@10.21.22.20
 ```
 
 #### Test the Passwordless SSH
 
 ```bash
-ssh root@10.21.22.15
-ssh root@10.21.22.16
+ssh root@10.21.22.10
+ssh root@10.21.22.20
 ```

@@ -70,12 +70,46 @@
 * Remove the USB drive when prompted.
 * Reboot the server.
 
+If you're unable to do basic commands like 'reboot' or 'sudo' try the below steps
+
+*   **Check `/root/.bashrc`:**
+
+    Bash
+
+    ```bash
+    nano /root/.bashrc
+    ```
+
+    Look for `PATH=` lines. If found, modify them as above.
+*   **If still not found or you want to ensure it's always set for root:** You can _add_ the `export PATH` line to the end of `/root/.bashrc` (or `/root/.profile` if you prefer it for login shells) if it's not explicitly set elsewhere:
+
+    Bash
+
+    ```bash
+    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games"
+    ```
+
+    (Ensure you don't duplicate `PATH` settings if they already exist, just modify the existing one.)
+
+**After making the permanent change:**
+
+1. **Save the file** in `nano` (Ctrl+O, Enter, Ctrl+X).
+2. **Either log out and log back in** as root (best way to ensure new `PATH` is loaded).
+3.  **Or, source the configuration file** to apply changes immediately to your current session without logging out:Bash
+
+    ```bash
+    source /root/.profile
+    ```
+
+    Then run `echo $PATH` again to confirm it's correct.
+
 #### Disable GRUB
 
-Log into the server through SSH/Local Terminal
+Log into the server through SSH/Local Terminal - log into super user (ROOT)
 
 ```bash
-sudo nano /etc/default/grub
+su 
+nano /etc/default/grub
 ```
 
 Look for these lines and adjust as follows:
@@ -86,11 +120,11 @@ Look for these lines and adjust as follows:
   This hides the menu unless you press a key.
 
 ```bash
-sudo update-grub
+update-grub
 ```
 
 ```bash
-sudo reboot
+reboot
 ```
 
 

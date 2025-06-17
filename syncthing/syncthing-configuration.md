@@ -154,7 +154,7 @@ The script will print colored messages indicating its progress.
 * It will then modify the `config.xml` to set the GUI address to `0.0.0.0:8384`.
 * Finally, it will restart the Syncthing service.
 
-**ON MASTER NODE: Disable Syncthing from starting on boot:**
+<mark style="color:red;">**ON MASTER NODE:**</mark>**&#x20;Disable Syncthing from starting on boot:**
 
 ```bash
 sudo systemctl stop syncthing@root.service

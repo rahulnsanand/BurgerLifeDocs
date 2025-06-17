@@ -43,15 +43,22 @@
 
 * [Configure KeepAlive](keepalived/configure-keepalive.md)
 
+## Borg backup
+
+* [Configure Borg Backup](borg-backup/configure-borg-backup.md)
+
 ## MariaDB
 
 * [Setup MariaDB](mariadb/setup-mariadb.md)
 * [Setup Galera Cluster](mariadb/setup-galera-cluster.md)
 * [User burger Creation](mariadb/user-burger-creation.md)
+* [Restore .SQL Backup](mariadb/restore-.sql-backup.md)
 
 ## PostgreSQL
 
-* [Setup PostgreSQL](postgresql/setup-postgresql.md)
+* [Immich PostgreSQL](postgresql/immich-postgresql.md)
+* [Authentik PostgreSQL](postgresql/authentik-postgresql.md)
+* [Mealie PostgreSQL](postgresql/mealie-postgresql.md)
 
 ## Syncthing
 
@@ -59,8 +66,8 @@
 
 ## HA Orchestration Setup
 
-* [Setup Passwordless SSH](ha-orchestration-setup/setup-passwordless-ssh.md)
 * [Application Affected by HA](ha-orchestration-setup/application-affected-by-ha.md)
+* [Setup Passwordless SSH](ha-orchestration-setup/setup-passwordless-ssh.md)
 
 ***
 
@@ -77,3 +84,4 @@
 * [VaultWarden](docker-applications/vaultwarden.md)
 * [File Browser](docker-applications/file-browser.md)
 * [Jellyfin](docker-applications/jellyfin.md)
+* [Immich](docker-applications/immich.md)

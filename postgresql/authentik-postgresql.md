@@ -2,7 +2,7 @@
 icon: database
 ---
 
-# Setup PostgreSQL
+# Authentik PostgreSQL
 
 **Create the `deploy_immich_pg.sh` file:** Use `nano` to create the file in the `/tmp` directory on each node:
 

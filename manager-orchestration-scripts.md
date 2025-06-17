@@ -101,7 +101,7 @@ nano /usr/local/bin/manager_perform_rsync.sh
 set -euo pipefail
 
 LOGFILE="/var/log/keepalived_failback.log"
-MASTER_IP="10.21.22.15" # Replace with Master's Wireguard IP
+MASTER_IP="10.21.22.10" # Replace with Master's Wireguard IP
 MASTER_USER="root"     # SSH user on Master (ensure this user has appropriate permissions on Master)
 
 # --- Configuration: Docker containers to temporarily stop before rsync ---

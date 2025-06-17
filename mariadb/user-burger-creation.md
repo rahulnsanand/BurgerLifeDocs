@@ -39,7 +39,7 @@ EXIT;
 
     Bash
 
-    ```
+    ```bash
     mysql -u burger -p
     ```
 
