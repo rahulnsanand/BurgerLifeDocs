@@ -19,7 +19,7 @@ services:
   vaultwarden:
     container_name: vaultwarden
     image: vaultwarden/server:latest
-    restart: unless-stopped
+    restart: on-failure
     volumes:
       - /opt/vaultwarden/data:/data
     ports:
@@ -35,16 +35,10 @@ services:
 * Press `Enter`
 * Press `Ctrl` + `X`&#x20;
 
-**Navigate to the `/tmp` directory:**
-
-```bash
-cd /tmp
-```
-
 **Start the Docker container using Docker Compose:** The `-f` flag specifies the path to your Docker Compose file. The `-d` flag runs it in detached mode (in the background).
 
 ```bash
-docker-compose -f vaultwarden_docker-compose.yml up -d
+docker-compose -p vaultwarden -f /tmp/vaultwarden_docker-compose.yml up -d
 ```
 
 **Verify the container is running:**

@@ -64,6 +64,7 @@ if [ -f "$conf_file" ]; then
   print_message ${YELLOW} "Removed existing $conf_file"
 fi
 
+sudo mkdir -p /etc/mysql/conf.d
 # Create the new galera.cnf file with the provided content
 print_message "${YELLOW}" "Creating $conf_file with Galera Cluster configuration..."
 cat <<EOF | sudo tee "$conf_file" > /dev/null

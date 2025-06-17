@@ -19,13 +19,14 @@ description: >-
 8. **rsync** — Fast file transfer and synchronization tool.
 9. **locate** — Quickly find files by name.
 10. **iptables -** To Help with Wireguard and set some rules
-11. **python3.11-venv**
+11. **python3.11-venv -** For Python Virtual Environments
+12. **util-linux -** For Flock which makes sure a service runs only once at a time
 
 #### Install Command
 
 ```bash
 sudo apt update
 sudo apt upgrade -y
-sudo apt install curl git wget sudo nano lsof tar rsync locate python3.11-venv iptables -y
+sudo apt install curl git wget sudo nano lsof tar rsync locate util-linux python3.11-venv iptables -y
 ```
 

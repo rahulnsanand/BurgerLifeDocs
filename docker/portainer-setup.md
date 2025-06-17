@@ -35,16 +35,10 @@ services:
 * Press `Enter`
 * Press `Ctrl` + `X`
 
-**Navigate to the `/tmp` directory:**
-
-```bash
-cd /tmp
-```
-
 **Start the Docker container using Docker Compose:** The `-f` flag specifies the path to your Docker Compose file. The `-d` flag runs it in detached mode (in the background).
 
 ```bash
-docker-compose -f portainer_docker-compose.yml up -d
+docker-compose -p portainer -f /tmp/portainer_docker-compose.yml up -d
 ```
 
 You should see output indicating that the `portainer` container is being created and started.
@@ -52,11 +46,13 @@ You should see output indicating that the `portainer` container is being created
 **Wait a few seconds and then restart Portainer (as requested):** This step is unusual for a typical `docker-compose up -d` as it starts the container. However, if you've encountered issues or have a specific reason for this, we'll include it.
 
 ```bash
-sleep 10 # Wait for 10 seconds to ensure it's fully initialized
+sleep 10
 docker restart portainer
 ```
 
 You should see `portainer` as output, indicating a successful restart.
+
+> SETUP NEW PORTAINER INSTANCE RIGHT AFTER RESTARTING
 
 **Verify the container is running:**
 

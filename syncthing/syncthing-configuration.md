@@ -154,9 +154,23 @@ The script will print colored messages indicating its progress.
 * It will then modify the `config.xml` to set the GUI address to `0.0.0.0:8384`.
 * Finally, it will restart the Syncthing service.
 
+**ON MASTER NODE: Disable Syncthing from starting on boot:**
+
+```bash
+sudo systemctl stop syncthing@root.service
+```
+
+```bash
+sudo systemctl disable syncthing@root.service
+```
+
+```bash
+sudo systemctl start syncthing@root.service
+```
+
 **Open your web browser:** On your computer, open a web browser and navigate to:
 
-```
+```tsconfig
 http://<your_node_address>:8384
 ```
 
@@ -174,8 +188,8 @@ This tells your Syncthing instance to only bind its synchronization listener to 
 3. In the **"Sync Protocol Listen Addresses"** field, replace `default` with your WireGuard assigned IP address and port `22000` (Syncthing's default sync port).
    *   **Example:** If `node1`'s WireGuard IP is `10.0.0.1`, you would enter:
 
-       ```
-       tcp://10.0.0.1:22000
+       ```tsconfig
+       tcp://10.21.22.10:22000
        ```
    * **Crucially, uncheck the following options:**
      * **Enable NAT traversal:** This would allow it to try connecting via UPnP/NAT-PMP, which you want to avoid if you're forcing WireGuard.
@@ -196,12 +210,12 @@ This ensures that when your Syncthing instance tries to connect to a peer, it _o
    * In the **"Addresses"** field, replace `dynamic` with the WireGuard IP address of `node2` and Syncthing's sync port `22000`.
      *   **Example (on `node1`'s GUI, for `node2`):**
 
-         ```
+         ```tsconfig
          tcp://10.0.0.2:22000
          ```
      *   **Example (on `node1`'s GUI, for `node3`):**
 
-         ```
+         ```tsconfig
          tcp://10.0.0.3:22000
          ```
    * **Click "Save".**
@@ -233,29 +247,29 @@ echo 204800 | sudo tee /proc/sys/fs/inotify/max_user_watches
 
 After the script runs, Syncthing will be installed and configured to run as a `systemd` service for the `root` user.
 
-*   **Check Syncthing Status:**&#x42;ash
+*   **Check Syncthing Status:**
 
-    ```
+    ```bash
     sudo systemctl status syncthing@root.service
     ```
-*   **Stop Syncthing:**&#x42;ash
+*   **Stop Syncthing:**
 
-    ```
+    ```bash
     sudo systemctl stop syncthing@root.service
     ```
-*   **Start Syncthing:**&#x42;ash
+*   **Start Syncthing:**
 
-    ```
+    ```bash
     sudo systemctl start syncthing@root.service
     ```
-*   **Restart Syncthing (after configuration changes):**&#x42;ash
+*   **Restart Syncthing (after configuration changes):**
 
-    ```
+    ```bash
     sudo systemctl restart syncthing@root.service
     ```
-*   **Disable Syncthing from starting on boot:**&#x42;ash
+*   **Disable Syncthing from starting on boot:**
 
-    ```
+    ```bash
     sudo systemctl disable syncthing@root.service
     ```
 

@@ -20,27 +20,12 @@
 * [Prepare Debian Server](getting-started/prepare-debian-server/README.md)
   * [Debian OS Setup](getting-started/prepare-debian-server/debian-os-setup.md)
   * [RPi 5 - OS Setup](getting-started/prepare-debian-server/rpi-5-os-setup.md)
+  * ['burger' User Creation](getting-started/prepare-debian-server/burger-user-creation.md)
   * [Auto Mount Drives](getting-started/prepare-debian-server/auto-mount-drives.md)
   * [Essential Packages](getting-started/prepare-debian-server/essential-packages.md)
   * [SSH Setup](getting-started/prepare-debian-server/ssh-setup.md)
   * [BurgerLife Automation Script](getting-started/prepare-debian-server/burgerlife-automation-script.md)
 * [Firewall/Network Rules](getting-started/firewall-network-rules.md)
-
-## Network Configuration
-
-* [Setup DDNS](network-configuration/setup-ddns.md)
-* [WireGuard Configuration](network-configuration/openapi.md)
-* [Cloudflared Configuration](network-configuration/openapi-1.md)
-
-## Syncthing
-
-* [SyncThing Configuration](syncthing/syncthing-configuration.md)
-
-## MariaDB
-
-* [Setup MariaDB](mariadb/setup-mariadb.md)
-* [Setup Galera Cluster](mariadb/setup-galera-cluster.md)
-* [User burger Creation](mariadb/user-burger-creation.md)
 
 ## Docker
 
@@ -48,13 +33,39 @@
 * [Docker Swarm Setup](docker/docker-swarm-setup.md)
 * [Portainer Setup](docker/portainer-setup.md)
 
+## Network Configuration
+
+* [Setup DDNS](network-configuration/setup-ddns.md)
+* [WireGuard Configuration](network-configuration/openapi.md)
+* [Cloudflared Configuration](network-configuration/openapi-1.md)
+
 ## KeepAlived
 
 * [Configure KeepAlive](keepalived/configure-keepalive.md)
 
+## MariaDB
+
+* [Setup MariaDB](mariadb/setup-mariadb.md)
+* [Setup Galera Cluster](mariadb/setup-galera-cluster.md)
+* [User burger Creation](mariadb/user-burger-creation.md)
+
 ## PostgreSQL
 
 * [Setup PostgreSQL](postgresql/setup-postgresql.md)
+
+## Syncthing
+
+* [SyncThing Configuration](syncthing/syncthing-configuration.md)
+
+## HA Orchestration Setup
+
+* [Setup Passwordless SSH](ha-orchestration-setup/setup-passwordless-ssh.md)
+* [Application Affected by HA](ha-orchestration-setup/application-affected-by-ha.md)
+
+***
+
+* [Master Orchestration Scripts](master-orchestration-scripts.md)
+* [Manager Orchestration Scripts](manager-orchestration-scripts.md)
 
 ## BurgerLife API
 
@@ -65,4 +76,4 @@
 * [Nginx Proxy Manager](docker-applications/nginx-proxy-manager.md)
 * [VaultWarden](docker-applications/vaultwarden.md)
 * [File Browser](docker-applications/file-browser.md)
-* [Copy of Page 1](docker-applications/copy-of-page-1.md)
+* [Jellyfin](docker-applications/jellyfin.md)

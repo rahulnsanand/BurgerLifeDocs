@@ -67,20 +67,20 @@ Paste the following, replacing placeholders (BELOW IS EXAMPLE ONLY):
 ```bash
 [Interface]
 PrivateKey = node1_private_key_string
-Address = 10.0.0.1/24
+Address = 10.21.22.1/24 # CURRENT NODES WIREGUARD IP
 ListenPort = 51820 
-PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o enp2s0 -j MASQUERADE
-PreDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o enp2s0 -j MASQUERADE
+PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+PreDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
 
 [Peer] # Peer 1: node2
 PublicKey = node2_public_key_string
-AllowedIPs = 10.0.0.2/32, 192.168.1.102/32 # Allow traffic to node2's WG IP and LAN IP
+AllowedIPs = 10.21.22.2/32 # Allow traffic to node2's WG IP and LAN IP
 Endpoint = hosur-vpn.asherslife.in:51820 # For Hosur Based Nodes
 PersistentKeepalive = 25 # Keep the tunnel active
 
 [Peer] # Peer 2: node3
 PublicKey = node3_public_key_string
-AllowedIPs = 10.0.0.3/32, 192.168.1.103/32 # Allow traffic to node3's WG IP and LAN IP
+AllowedIPs = 10.21.22.3/32 # Allow traffic to node3's WG IP and LAN IP
 Endpoint = vpn.asherslife.in:51820 # For Bangalore Based Nodes
 PersistentKeepalive = 25 # Keep the tunnel active
 ```
