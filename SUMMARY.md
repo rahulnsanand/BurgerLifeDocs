@@ -37,7 +37,8 @@
 
 * [Setup DDNS](network-configuration/setup-ddns.md)
 * [WireGuard Configuration](network-configuration/openapi.md)
-* [Cloudflared Configuration](network-configuration/openapi-1.md)
+* [Adguard Configuration](network-configuration/openapi-1.md)
+* [Cloudflared Configuration](network-configuration/openapi-2.md)
 
 ## KeepAlived
 
@@ -84,4 +85,11 @@
 * [VaultWarden](docker-applications/vaultwarden.md)
 * [File Browser](docker-applications/file-browser.md)
 * [Jellyfin](docker-applications/jellyfin.md)
+* [Plex](docker-applications/plex.md)
+* [ARR Stack](docker-applications/arr-stack.md)
+* [Homepage](docker-applications/homepage.md)
+* [Mealie](docker-applications/mealie.md)
+* [Firefox](docker-applications/firefox.md)
+* [N8N](docker-applications/n8n.md)
+* [Glances](docker-applications/glances.md)
 * [Immich](docker-applications/immich.md)

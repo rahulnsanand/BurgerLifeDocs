@@ -15,19 +15,16 @@ When prompted, enter the MariaDB `root` password.
 **Create the user and grant privileges:**
 
 ```sql
--- Create the user 'burger' that can connect from ANY host ('%')
--- Replace 'your_strong_password_here' with a strong password for user 'burger'.
-CREATE USER 'burger'@'%' IDENTIFIED BY 'your_strong_password_here';
+DROP USER IF EXISTS 'burger'@'%';
+DROP USER IF EXISTS 'burger'@'localhost';
+FLUSH PRIVILEGES;
+CREATE USER 'burger'@'localhost' IDENTIFIED BY 'ENTER_PASSWORD';
+CREATE USER 'burger'@'%' IDENTIFIED BY 'ENTER_PASSWORD';
 
--- Grant all privileges on all databases and all tables to 'burger'
--- The WITH GRANT OPTION allows 'burger' to grant privileges to other users.
+GRANT ALL PRIVILEGES ON *.* TO 'burger'@'localhost' WITH GRANT OPTION;
 GRANT ALL PRIVILEGES ON *.* TO 'burger'@'%' WITH GRANT OPTION;
 
--- Reload the grant tables to apply changes
 FLUSH PRIVILEGES;
-
--- Exit the MariaDB prompt
-EXIT;
 ```
 
 **Important:**

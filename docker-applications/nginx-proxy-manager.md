@@ -65,10 +65,18 @@ services:
 * Press `Enter`
 * Press `Ctrl` + `X`
 
-**Start the Docker container using Docker Compose:** The `-f` flag specifies the path to your Docker Compose file. The `-d` flag runs it in detached mode (in the background).
+<mark style="color:green;">**\[MASTER]**</mark>**&#x20;Start the Docker container using Docker Compose:** The `-f` flag specifies the path to your Docker Compose file. The `-d` flag runs it in detached mode (in the background).
 
 ```bash
 docker-compose -p nginx -f /tmp/npm_docker-compose.yml up -d
+```
+
+You should see output indicating that the `nginx` container is being created and started.
+
+<mark style="color:orange;">**\[MANAGER]**</mark>**&#x20;Start the Docker container using Docker Compose:** The `-f` flag specifies the path to your Docker Compose file. The `-d` flag runs it in detached mode (in the background).
+
+```bash
+docker-compose -p nginx -f /tmp/npm_docker-compose.yml create
 ```
 
 You should see output indicating that the `nginx` container is being created and started.
@@ -85,4 +93,10 @@ You should see `nginx` listed with `Status: Up ...`.
 
 ```
 http://your_ip_address:81
+```
+
+**Remove the temporary Docker Compose file:**&#x42;ash
+
+```bash
+rm /tmp/npm_docker-compose.yml
 ```

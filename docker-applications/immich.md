@@ -36,7 +36,7 @@ services:
     depends_on:
       - redis
       #- database
-    restart: unless-stopped
+    restart: on-failure
 
   immich-machine-learning:
     container_name: immich_machine_learning
@@ -103,13 +103,13 @@ nano /tmp/.env
 ```bash
 UPLOAD_LOCATION=/mnt/primary/gallery
 DB_DATA_LOCATION=/opt/immich/postgres
-DB_URL='postgresql://postgres:RahSwas2206@10.10.10.10:5432/immichdb'
+DB_URL='postgresql://postgres:<Password>@10.10.10.10:5432/immichdb'
 
 TZ=Asia/Kolkata
 
 IMMICH_VERSION=v1.134.0
 
-DB_PASSWORD=RahSwas2206
+DB_PASSWORD=<Password>
 DB_USERNAME=postgres
 DB_DATABASE_NAME=immichdb
 DB_HOSTNAME=10.10.10.10
@@ -122,11 +122,21 @@ DB_HOSTNAME=10.10.10.10
 * Press `Enter`
 * Press `Ctrl` + `X`&#x20;
 
-**Start the Docker container using Docker Compose:** The `-f` flag specifies the path to your Docker Compose file. The `-d` flag runs it in detached mode (in the background).
+<mark style="color:green;">**\[MASTER]**</mark>**&#x20;Start the Docker container using Docker Compose:** The `-f` flag specifies the path to your Docker Compose file. The `-d` flag runs it in detached mode (in the background).
 
 ```bash
 docker-compose -p immich -f /tmp/immich_docker-compose.yml up -d
 ```
+
+You should see output indicating that the `nginx` container is being created and started.
+
+<mark style="color:orange;">**\[MANAGER]**</mark>**&#x20;Start the Docker container using Docker Compose:** The `-f` flag specifies the path to your Docker Compose file. The `-d` flag runs it in detached mode (in the background).
+
+```bash
+docker-compose -p immich -f /tmp/immich_docker-compose.yml create
+```
+
+You should see output indicating that the `nginx` container is being created and started.
 
 **Verify the container is running:**
 

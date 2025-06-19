@@ -133,13 +133,13 @@ install_syncthing() {
 install_syncthing
 ```
 
-**Add execute permissions:**&#x42;ash
+**Add execute permissions:**
 
 ```bash
 chmod +x /tmp/syncthing_setup.sh
 ```
 
-**Execute the script:**&#x42;ash
+**Execute the script:**
 
 ```bash
 sudo /tmp/syncthing_setup.sh

@@ -2,32 +2,26 @@
 icon: network-wired
 ---
 
-# Cloudflared Configuration
+# Adguard Configuration
 
-#### Visit CloudFlare Zero Trust Dashboard
-
-{% embed url="https://one.dash.cloudflare.com/" %}
-
-1. **Under Networks > Tunnels > Create a Tunnel**
-2. **Give your Tunnel a name (eg. 'asherslife-tunnel')**
-3. **Once Tunnel is created, you'll be asked to set it up on your server, choose 'Docker' to containerize the tunnel deployment on your server.**
-
-**Create the `portainer_docker-compose.yml` file:** Use `nano` to create the file in the `/tmp` directory:
+**Create the `deploy_adguard.sh` file:** Use `nano` to create a new file:
 
 ```bash
-nano /tmp/setup_cloudflared.sh
+nano /tmp/deploy_adguard.sh
 ```
 
-**Paste the below Script content:** Copy the following content and paste it into the `nano` editor
+**Paste the refined script content:** Copy the following content and paste it into the `nano` editor. This version will prompt you for all the necessary dynamic values.
 
-<pre class="language-bash"><code class="lang-bash">#!/bin/bash
+```bash
+#!/bin/bash
 
 # Define ANSI color codes
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 RED='\033[0;31m'
-BLUE='\033[0;34m'
 RESET='\033[0m'
+
+# --- Functions ---
 
 # Function to print colored messages
 print_message() {
@@ -36,87 +30,106 @@ print_message() {
   echo -e "${color}${message}${RESET}"
 }
 
-print_message "${YELLOW}" "--- Cloudflared Tunnel Container Setup ---"
+# Function to check if AdGuard Home is already installed
+is_adguard_installed() {
+  if systemctl is-active --quiet AdGuardHome; then
+    return 0 # True, AdGuard Home service is active
+  elif [ -f "/opt/AdGuardHome/AdGuardHome" ]; then
+    return 0 # True, binary exists
+  else
+    return 1 # False
+  fi
+}
 
-# --- Input for Token ---
-read -s -p "Enter your Cloudflare Tunnel Token (starts with 'ey...'): " CF_TUNNEL_TOKEN
-echo "" # New line after silent input
+# Function to uninstall AdGuard Home
+uninstall_adguard() {
+  if is_adguard_installed; then
+    print_message ${YELLOW} "AdGuard Home detected. Attempting to uninstall..."
+    if sudo /opt/AdGuardHome/AdGuardHome -s uninstall; then
+      print_message ${GREEN} "AdGuard Home service uninstalled successfully."
+    else
+      print_message ${YELLOW} "Could not uninstall AdGuard Home service. It might not have been installed as a service, or there was an issue."
+    fi
 
-if [[ -z "$CF_TUNNEL_TOKEN" ]]; then
-    print_message "${RED}" "Error: Cloudflare Tunnel Token cannot be empty."
-    exit 1
+    if sudo rm -rf /opt/AdGuardHome; then
+      print_message ${GREEN} "Removed /opt/AdGuardHome directory."
+    else
+      print_message ${RED} "Failed to remove /opt/AdGuardHome. Manual intervention might be required."
+      return 1 # Indicate failure
+    fi
+  else
+    print_message ${YELLOW} "AdGuard Home not found. Nothing to uninstall."
+  fi
+  return 0 # Indicate success
+}
+
+# Function to determine the correct AdGuard Home architecture
+get_architecture() {
+  case "$(dpkg --print-architecture)" in
+    amd64)
+      echo "linux_amd64"
+      ;;
+    arm64|aarch64)
+      echo "linux_arm64"
+      ;;
+    armhf|arm)
+      echo "linux_armv7"
+      ;;
+    *)
+      print_message ${RED} "Unsupported architecture: $(dpkg --print-architecture). Please check AdGuard Home documentation for compatible architectures."
+      exit 1
+      ;;
+  esac
+}
+
+# --- Main Script Logic ---
+
+print_message ${GREEN} "Starting AdGuard Home installation script..."
+print_message ${GREEN} "This script will install or reinstall AdGuard Home on your Debian server."
+echo ""
+
+# Uninstall any previous installation
+uninstall_adguard || exit 1 # Exit if uninstall fails
+
+echo ""
+print_message ${YELLOW} "Ensuring necessary directories exist..."
+sudo mkdir -p /opt/AdGuardHome /opt/Downloads || { print_message ${RED} "Failed to create directories. Exiting."; exit 1; }
+
+ARCH=$(get_architecture)
+DOWNLOAD_URL="https://static.adtidy.org/adguardhome/release/AdGuardHome_${ARCH}.tar.gz"
+DOWNLOAD_PATH="/opt/Downloads/AdGuardHome_${ARCH}.tar.gz"
+
+print_message ${YELLOW} "Downloading AdGuard Home for ${ARCH} from ${DOWNLOAD_URL}..."
+if ! sudo wget "${DOWNLOAD_URL}" -O "${DOWNLOAD_PATH}"; then
+  print_message ${RED} "Failed to download AdGuard Home. Please check your internet connection or the download URL."
+  exit 1
 fi
 
-# --- Container Name ---
-read -p "Enter a desired container name (e.g., cloudflared-tunnel, my-app-tunnel): " CONTAINER_NAME
-if [[ -z "$CONTAINER_NAME" ]]; then
-    CONTAINER_NAME="cloudflared-tunnel"
-    print_message "${YELLOW}" "No container name entered. Defaulting to '$CONTAINER_NAME'."
+print_message ${YELLOW} "Extracting AdGuard Home to /opt/AdGuardHome..."
+if ! sudo tar xvf "${DOWNLOAD_PATH}" -C /opt/; then
+  print_message ${RED} "Failed to extract AdGuard Home. The downloaded file might be corrupt or incomplete."
+  sudo rm -f "${DOWNLOAD_PATH}" # Clean up incomplete download
+  exit 1
 fi
 
-# --- Restart Policy ---
-# RESTART_POLICY_PROMPT=$(cat &#x3C;&#x3C;EOF
-# Choose a restart policy:
-#   [1] no         (Do not automatically restart the container.)
-#   [2] on-failure (Restart only if the container exits with a non-zero exit code.)
-#   [3] unless-stopped (Restart unless the container is explicitly stopped or Docker daemon is stopped.)
-#   [4] always     (Always restart the container, even if it's stopped manually.)
-# Enter choice (1-4, default: 3):
-# EOF
-# )
-# read -p "$RESTART_POLICY_PROMPT" RESTART_POLICY_CHOICE
+print_message ${YELLOW} "Cleaning up downloaded archive..."
+sudo rm -f "${DOWNLOAD_PATH}" || print_message ${YELLOW} "Could not remove downloaded archive: ${DOWNLOAD_PATH}. Manual cleanup might be needed."
 
-RESTART_POLICY="on-failure" # Default
-# case "$RESTART_POLICY_CHOICE" in
-#     1) RESTART_POLICY="no" ;;
-#     2) RESTART_POLICY="on-failure" ;;
-#     3) RESTART_POLICY="unless-stopped" ;;
-<strong>#     4) RESTART_POLICY="always" ;;
-</strong>#     *) print_message "${YELLOW}" "Invalid choice. Defaulting to 'unless-stopped'." ;;
-# esac
+print_message ${YELLOW} "Installing AdGuard Home as a system service..."
+if ! sudo /opt/AdGuardHome/AdGuardHome -s install; then
+  print_message ${RED} "Failed to install AdGuard Home as a service. Please check the logs for errors."
+  print_message ${YELLOW} "AdGuard Home might still be present in /opt/AdGuardHome, but not as a service."
+  exit 1
+fi
 
-DOCKER_COMPOSE_FILE_PATH="/tmp/docker-compose-${CONTAINER_NAME}.yml"
+print_message ${GREEN} "AdGuard Home is now installed and running!"
+print_message ${GREEN} "You can access the AdGuard Home web interface by navigating to http://YOUR_SERVER_IP:3000 in your browser."
+print_message ${GREEN} "Remember to configure your DNS settings to use AdGuard Home."
+echo ""
+print_message ${GREEN} "Installation complete."
 
-rm "$DOCKER_COMPOSE_FILE_PATH"
-
-DOCKER_COMPOSE_CONTENT=$(cat &#x3C;&#x3C;EOF
-version: '3.8'
-services:
-  ${CONTAINER_NAME}:
-    image: cloudflare/cloudflared:latest
-    container_name: ${CONTAINER_NAME}
-    restart: ${RESTART_POLICY}
-    command: tunnel --no-autoupdate run --token ${CF_TUNNEL_TOKEN}
-EOF
-)
-
-print_message "${GREEN}" "Writing Docker Compose file to: $DOCKER_COMPOSE_FILE_PATH"
-echo "$DOCKER_COMPOSE_CONTENT" > "$DOCKER_COMPOSE_FILE_PATH"
-
-print_message "${BLUE}" "\nTo deploy with Docker Compose:"
-print_message "${GREEN}" "  sudo docker-compose -p ${CONTAINER_NAME} -f ${DOCKER_COMPOSE_FILE_PATH} up -d"
-print_message "${YELLOW}" "To stop and remove:"
-print_message "${GREEN}" "  sudo docker-compose -p ${CONTAINER_NAME} -f ${DOCKER_COMPOSE_FILE_PATH} down"
-
-# --- Generate Docker Run Command ---
-print_message "${BLUE}" "\n--- Generating Docker Run Command ---"
-DOCKER_RUN_COMMAND="sudo docker run -d \\"
-DOCKER_RUN_COMMAND+=" --name ${CONTAINER_NAME} \\"
-DOCKER_RUN_COMMAND+=" --restart ${RESTART_POLICY} \\"
-DOCKER_RUN_COMMAND+=" cloudflare/cloudflared:latest \\"
-DOCKER_RUN_COMMAND+=" tunnel --no-autoupdate run --token ${CF_TUNNEL_TOKEN}"
-
-print_message "${GREEN}" "Your generated Docker Run command:"
-print_message "${GREEN}" "$DOCKER_RUN_COMMAND"
-
-print_message "${YELLOW}" "\n--- Next Steps ---"
-print_message "${YELLOW}" "Choose either the Docker Compose or Docker Run method to deploy your tunnel."
-print_message "${YELLOW}" "Remember to manage your tunnel's DNS records via the Cloudflare dashboard."
-print_message "${YELLOW}" "For more advanced configurations (like ingress rules, multiple tunnels), consult the Cloudflared documentation."
-
-# Unset sensitive variables
-unset CF_TUNNEL_TOKEN
-</code></pre>
+exit 0
+```
 
 **Save the file and exit nano:**
 
@@ -127,17 +140,19 @@ unset CF_TUNNEL_TOKEN
 #### **Make the Script Executable**
 
 ```bash
-chmod +x /tmp/setup_cloudflared.sh
+chmod +x /tmp/deploy_adguard.sh
 ```
 
-**Execute the script:**&#x42;ash
+**Execute the script with `sudo`:**
 
 ```bash
-sudo /tmp/setup_cloudflared.sh
+sudo /tmp/deploy_adguard.sh
 ```
 
-**Remove the script:**&#x42;ash
+#### **Cleaning Up the Script (Temporary File)**
+
+Once your Keepalived setup is confirmed and working, you can remove the temporary script file.
 
 ```bash
-rm /tmp/setup_cloudflared.sh
+rm /tmp/deploy_adguard.sh
 ```
