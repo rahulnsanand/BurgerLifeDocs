@@ -53,7 +53,7 @@
 
 * [Setup MariaDB](mariadb/setup-mariadb.md)
 * [Setup Galera Cluster](mariadb/setup-galera-cluster.md)
-* [User burger Creation](mariadb/user-burger-creation.md)
+* [User burger Creation (P)](mariadb/user-burger-creation-p.md)
 * [Restore .SQL Backup](mariadb/restore-.sql-backup.md)
 
 ## PostgreSQL
@@ -84,9 +84,10 @@
 
 * [Nginx Proxy Manager  (P)](docker-applications/nginx-proxy-manager-p.md)
 * [Immich (P)](docker-applications/immich-p.md)
-* [VaultWarden (T)](docker-applications/vaultwarden-t.md)
+* [VaultWarden (T|P)](docker-applications/vaultwarden-t-or-p.md)
 * [Mealie (T)](docker-applications/mealie-t.md)
 * [ARR Stack (T)](docker-applications/arr-stack-t.md)
+* [NextCloud](docker-applications/nextcloud.md)
 * [File Browser](docker-applications/file-browser.md)
 * [Jellyfin](docker-applications/jellyfin.md)
 * [Plex](docker-applications/plex.md)

@@ -10,35 +10,35 @@ icon: rotate
 
 ### Docker Containers  (Restart Policy - On-Failure)
 
-1. Immich PostgreSQL - Manual Backups Needed
+1. **Immich PostgreSQL** - Manual Backups Needed
    1. Master Node Up | Manager Node Down
       1. Failover: Not Applicable - All Services Point to Master
       2. Failback: Once Manager Node connects to Master, Manager node will assume it's backup status
    2. Master Node Down | Manage Node Up
       1. Failover: Manager becomes the Primary PostgreSQL Node Automatically
       2. Failback: Once Master Node connects to Manager, Manager node's container will stop, giving master node it's primary status (\~15 seconds). Once done, Manager node will assume it's backup status
-2. Nginx Proxy Manager
+2. **Nginx Proxy Manager**
    1. Master Node Up | Manager Node Down
       1. Failover: Not Applicable - All Services Point to Master
       2. Failback: Not Applicable - All Services Point to Master
    2. Master Node Down | Manage Node Up
       1. Failover: Nginx container must be started
       2. Failback: Once Master Node connects to Manager, Manager node's container will stop
-3. Vaultwarden - Manual Backups Needed <mark style="color:red;">- CONVERT TO MARIADB</mark>
+3. **Vaultwarden** - Manual Backups Needed
    1. Master Node Up | Manager Node Down
       1. Failover: Not Applicable - All Services Point to Master
       2. Failback: Not Applicable - All Services Point to Master
    2. Master Node Down | Manage Node Up
       1. Failover: Nginx container must be started
       2. Failback: Once Master Node connects to Manager, Manager node's container will stop
-4. NextCloud (TBD) - Manual Backups Needed <mark style="color:red;">- MANUAL DOCKER COMMAND TO START/STOP</mark>
+4. **NextCloud** (TBD) - Manual Backups Needed <mark style="color:red;">- MANUAL DOCKER COMMAND TO START/STOP</mark>
    1. Master Node Up | Manager Node Down
       1. Failover: Not Applicable - All Services Point to Master
       2. Failback: Not Applicable - All Services Point to Master
    2. Master Node Down | Manage Node Up
       1. Failover: Nginx container must be started
       2. Failback: Once Master Node connects to Manager, Manager node's container will stop
-5. Mealie <mark style="color:red;">- CONVERT TO POSTGRESQL</mark>
+5. **Mealie** <mark style="color:red;">- CONVERT TO POSTGRESQL</mark>
 
 ### Linux Services  (Systemd Service Disabled)
 
