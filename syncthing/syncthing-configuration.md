@@ -278,3 +278,47 @@ After the script runs, Syncthing will be installed and configured to run as a `s
 ```bash
 rm /tmp/syncthing_setup.sh
 ```
+
+### Folders to Sync
+
+1. /mnt/gallery
+2. /mnt/media
+3. /mnt/nextcloud
+4. /opt/bazarr
+5. /opt/bookstack
+6. /opt/Documents
+7. /opt/Downloads
+8. /opt/filebrowser
+9. /opt/FileShare
+10. /opt/firefox
+11. /opt/gluetun
+12. /opt/homepage
+13. /opt/maintainerr
+14. /opt/mealie
+15. /opt/monica
+16. /opt/n8n
+17. /opt/nginx
+18. /opt/notifiarr
+19. /opt/onlyoffice
+20. /opt/overseerr
+21. /opt/plex
+22. /opt/prowlarr
+23. /opt/qbittorrent
+24. /opt/radarr
+25. /opt/sonarr
+26. /opt/speedtest
+27. /opt/surfshark
+28. /opt/uptime\_kuma
+29. /opt/vaultwarden
+30. /opt/vpn\_firefox
+31. /opt/vpn\_speedtest
+32. /opt/wireguard
+
+### Apps to Stop And Borg Back Up
+
+1. homepage
+2. filebrowser
+3. immich
+4. jellyfin
+5.
+6. vaultwarden

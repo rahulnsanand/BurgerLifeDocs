@@ -93,8 +93,10 @@ EOF
 print_message "${GREEN}" "Writing Docker Compose file to: $DOCKER_COMPOSE_FILE_PATH"
 echo "$DOCKER_COMPOSE_CONTENT" > "$DOCKER_COMPOSE_FILE_PATH"
 
-print_message "${BLUE}" "\nTo deploy with Docker Compose:"
+print_message "${BLUE}" "\nTo deploy on MASTER with Docker Compose:"
 print_message "${GREEN}" "  sudo docker-compose -p ${CONTAINER_NAME} -f ${DOCKER_COMPOSE_FILE_PATH} up -d"
+print_message "${BLUE}" "\nTo deploy on MANAGER with Docker Compose:"
+print_message "${GREEN}" "  sudo docker-compose -p ${CONTAINER_NAME} -f ${DOCKER_COMPOSE_FILE_PATH} create"
 print_message "${YELLOW}" "To stop and remove:"
 print_message "${GREEN}" "  sudo docker-compose -p ${CONTAINER_NAME} -f ${DOCKER_COMPOSE_FILE_PATH} down"
 
@@ -130,13 +132,13 @@ unset CF_TUNNEL_TOKEN
 chmod +x /tmp/setup_cloudflared.sh
 ```
 
-**Execute the script:**&#x42;ash
+**Execute the script:**
 
 ```bash
 sudo /tmp/setup_cloudflared.sh
 ```
 
-**Remove the script:**&#x42;ash
+**Remove the script:**
 
 ```bash
 rm /tmp/setup_cloudflared.sh

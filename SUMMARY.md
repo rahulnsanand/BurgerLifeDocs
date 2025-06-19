@@ -5,6 +5,7 @@
 ## Getting Started
 
 * [Quick Reference](getting-started/quick-reference.md)
+* [Important Commands](getting-started/important-commands.md)
 * [Server Prep Checklist](getting-started/server-prep-checklist.md)
 * [Linux Installations](getting-started/linux-installations.md)
 * [Docker Containers](getting-started/docker-containers.md)
@@ -33,6 +34,10 @@
 * [Docker Swarm Setup](docker/docker-swarm-setup.md)
 * [Portainer Setup](docker/portainer-setup.md)
 
+## Borg backup
+
+* [Borg Backup](borg-backup/borg-backup.md)
+
 ## Network Configuration
 
 * [Setup DDNS](network-configuration/setup-ddns.md)
@@ -43,10 +48,6 @@
 ## KeepAlived
 
 * [Configure KeepAlive](keepalived/configure-keepalive.md)
-
-## Borg backup
-
-* [Configure Borg Backup](borg-backup/configure-borg-backup.md)
 
 ## MariaDB
 
@@ -81,15 +82,15 @@
 
 ## Docker Applications
 
-* [Nginx Proxy Manager](docker-applications/nginx-proxy-manager.md)
-* [VaultWarden](docker-applications/vaultwarden.md)
+* [Nginx Proxy Manager  (P)](docker-applications/nginx-proxy-manager-p.md)
+* [Immich (P)](docker-applications/immich-p.md)
+* [VaultWarden (T)](docker-applications/vaultwarden-t.md)
+* [Mealie (T)](docker-applications/mealie-t.md)
+* [ARR Stack (T)](docker-applications/arr-stack-t.md)
 * [File Browser](docker-applications/file-browser.md)
 * [Jellyfin](docker-applications/jellyfin.md)
 * [Plex](docker-applications/plex.md)
-* [ARR Stack](docker-applications/arr-stack.md)
 * [Homepage](docker-applications/homepage.md)
-* [Mealie](docker-applications/mealie.md)
 * [Firefox](docker-applications/firefox.md)
 * [N8N](docker-applications/n8n.md)
 * [Glances](docker-applications/glances.md)
-* [Immich](docker-applications/immich.md)
