@@ -12,7 +12,7 @@ This section provides detailed information about the deployment and specificatio
 
 #### System Overview
 
-<table><thead><tr><th width="167.5999755859375">Host Name</th><th width="113">LAN IP</th><th width="141.800048828125">WireGuard IP</th></tr></thead><tbody><tr><td>burgermaster</td><td>10.10.10.10</td><td>10.21.22.10</td></tr><tr><td>burgermanager</td><td>10.10.10.20</td><td>10.21.22.20</td></tr><tr><td>burgerworker</td><td>10.10.10.15</td><td>10.21.22.15</td></tr><tr><td>workermanager</td><td>10.10.10.16</td><td>10.21.22.16</td></tr><tr><td>workerslave</td><td>10.10.10.17</td><td>10.21.22.17</td></tr></tbody></table>
+<table><thead><tr><th width="167.5999755859375">Host Name</th><th width="113">LAN IP</th><th width="141.800048828125">WireGuard IP</th></tr></thead><tbody><tr><td>burgermaster</td><td>10.10.10.10</td><td>10.21.22.10</td></tr><tr><td>burgermanager</td><td>10.10.10.20</td><td>10.21.22.20</td></tr><tr><td>burgercloud</td><td>-</td><td>10.21.22.15</td></tr></tbody></table>
 
 ***
 
@@ -36,7 +36,7 @@ This section provides detailed information about the deployment and specificatio
   * **Secondary:** 4TB HDD
 * **Location:** Hosur, TN
 
-**3. burgerworker (HA-PiCluster | WorkerCluster)**
+**3. burgercloud**
 
 * **IP Address:** 10.10.10.15 | **VIP:** 10.10.10.5
 * **Processor:** Raspberry Pi 5
@@ -45,23 +45,7 @@ This section provides detailed information about the deployment and specificatio
   * **Primary:** 500GB NVMe SSD
 * **Location:** Bangalore
 
-**4. workermanager (HA-PiCluster | WorkerCluster)**
 
-* **IP Address:** 10.10.10.16
-* **Processor:** Raspberry Pi 5
-* **Memory:** 4GB RAM
-* **Storage:**
-  * **Primary:** 64GB SD Card
-* **Location:** Bangalore
-
-**5. workerslave (HA-PiCluster | WorkerCluster)**
-
-* **IP Address:** 10.10.10.17
-* **Processor:** Raspberry Pi 5
-* **Memory:** 4GB RAM
-* **Storage:**
-  * **Primary:** 64 GB SD Card
-* **Location:** Bangalore
 
 
 

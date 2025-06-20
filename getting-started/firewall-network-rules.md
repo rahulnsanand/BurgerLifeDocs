@@ -54,7 +54,10 @@ declare -A PRIVATE_NETWORK_PORTS=(
     [4567]="Allow MariaDB Galera Cluster (Default SYNC)"
     [4444]="Allow MariaDB Galera Cluster (Default IST)"
     [4568]="Allow MariaDB Galera Cluster (Default SST)"
-    [5432]="Allow PostgreSQL Server"
+    [5432]="Allow PostgreSQL Server"    
+    [8008]="Patroni REST API"
+    [2379]="etcd default client/peer ports"
+    [2280]="etcd default client/peer ports"
 
     # --- Keepalived/VRRP ---
     [5400]="Allow Keepalived (Unicast)" # For non-multicast VRRP
@@ -352,7 +355,7 @@ echo -e "  ${GREEN}1) Install and Configure UFW${NC}"
 echo -e "  ${RED}2) Uninstall UFW${NC}"
 echo -e "  ${BLUE}3) Show UFW Status${NC}"
 echo -e "  ${MAGENTA}4) Exit${NC}"
-echo -n "${YELLOW}Enter your choice (1-4): ${NC}"
+echo -n "${YELLOW}Enter your choice (1-4):${NC}"
 read -r CHOICE
 
 case "$CHOICE" in

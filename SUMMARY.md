@@ -21,6 +21,7 @@
 * [Prepare Debian Server](getting-started/prepare-debian-server/README.md)
   * [Debian OS Setup](getting-started/prepare-debian-server/debian-os-setup.md)
   * [RPi 5 - OS Setup](getting-started/prepare-debian-server/rpi-5-os-setup.md)
+  * [RPI Installing Proxmox VE](getting-started/prepare-debian-server/rpi-installing-proxmox-ve.md)
   * ['burger' User Creation](getting-started/prepare-debian-server/burger-user-creation.md)
   * [Auto Mount Drives](getting-started/prepare-debian-server/auto-mount-drives.md)
   * [Essential Packages](getting-started/prepare-debian-server/essential-packages.md)
@@ -61,6 +62,7 @@
 * [Immich PostgreSQL](postgresql/immich-postgresql.md)
 * [Authentik PostgreSQL](postgresql/authentik-postgresql.md)
 * [Mealie PostgreSQL](postgresql/mealie-postgresql.md)
+* [Dev - PostgreSQL Script](postgresql/dev-postgresql-script.md)
 
 ## Syncthing
 

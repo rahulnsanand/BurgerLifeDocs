@@ -31,3 +31,21 @@ sudo rsync -av --mkpath /mnt/backup/opt_borg/ burger@10.10.10.20:/opt/opt_borg/
 ```bash
 sudo mv -t /mnt/backup/ projects/work/report projects/personal/photos projects/archive/old_docs
 ```
+
+### Manager Takeover Logs
+
+```bash
+sudo cat /var/log/keepalived_manager_takeover.log
+```
+
+### FailBack Logs
+
+```bash
+sudo cat /var/log/keepalived_failback.log
+```
+
+### Network Interface IP Check
+
+```bash
+ip addr show wg0
+```
