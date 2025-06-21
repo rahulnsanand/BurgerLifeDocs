@@ -32,16 +32,10 @@ sudo rsync -av --mkpath /mnt/backup/opt_borg/ burger@10.10.10.20:/opt/opt_borg/
 sudo mv -t /mnt/backup/ projects/work/report projects/personal/photos projects/archive/old_docs
 ```
 
-### Manager Takeover Logs
+### KeepAlived Failover/Failback Logs
 
 ```bash
-sudo cat /var/log/keepalived_manager_takeover.log
-```
-
-### FailBack Logs
-
-```bash
-sudo cat /var/log/keepalived_failback.log
+sudo cat /var/log/keepalived_logs.log
 ```
 
 ### Network Interface IP Check
