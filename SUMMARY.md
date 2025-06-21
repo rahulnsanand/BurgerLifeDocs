@@ -48,7 +48,7 @@
 
 ## KeepAlived
 
-* [Configure KeepAlive](keepalived/configure-keepalive.md)
+* [KeepAlive Config](keepalived/keepalive-config.md)
 
 ## HA Orchestration Setup
 

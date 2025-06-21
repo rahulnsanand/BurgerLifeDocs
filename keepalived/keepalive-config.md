@@ -2,7 +2,7 @@
 icon: sitemap
 ---
 
-# Configure KeepAlive
+# KeepAlive Config
 
 **Create the `deploy_keepalived.sh` file:** Use `nano` to create a new file:
 
@@ -183,7 +183,7 @@ $(if [ -n "$additional_config" ]; then echo "$additional_config"; fi)
 EOF
 )
 
-# Define the path to the configuration file
+# Define the path to the configuration filesudo reboot 
 config_file="/etc/keepalived/keepalived.conf"
 
 # Remove existing config file

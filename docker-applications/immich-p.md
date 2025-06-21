@@ -2,7 +2,7 @@
 icon: aperture
 ---
 
-# Immich
+# Immich (P)
 
 **Create the `docker-compose.yml` file:** We'll use `nano` to create the file in the `/tmp` directory.
 
@@ -33,6 +33,13 @@ services:
       - .env
     ports:
       - 11024:2283
+    deploy:
+      resources:
+        limits:
+          # Immich server (main app)
+          memory: 1.5G # Max 1.5 Gigabytes for the server
+        reservations:
+          memory: 1G   # Reserve 1 Gigabyte
     depends_on:
       - redis
       #- database
@@ -50,6 +57,13 @@ services:
       - /opt/immich/machine_learning/cache:/cache
     env_file:
       - .env
+    deploy:
+      resources:
+        limits:
+          # Machine learning (where geocoding runs)
+          memory: 1.5G # Max 1.5 Gigabytes for ML. This is VERY tight.
+        reservations:
+          memory: 1G
     restart: unless-stopped
 
   redis:
