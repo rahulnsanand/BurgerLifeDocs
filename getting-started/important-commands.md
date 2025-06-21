@@ -49,3 +49,9 @@ sudo cat /var/log/keepalived_failback.log
 ```bash
 ip addr show wg0
 ```
+
+### MariaDB Galera Cluster Check
+
+```bash
+sudo mysql -e 'SHOW STATUS LIKE "wsrep_cluster_size";'
+```

@@ -37,7 +37,7 @@
 
 ## Borg backup
 
-* [Borg Backup](borg-backup/borg-backup.md)
+* [Borg Backup PENDING](borg-backup/borg-backup-pending.md)
 
 ## Network Configuration
 
@@ -49,6 +49,13 @@
 ## KeepAlived
 
 * [Configure KeepAlive](keepalived/configure-keepalive.md)
+
+## HA Orchestration Setup
+
+* [Application Affected by HA](ha-orchestration-setup/application-affected-by-ha.md)
+* [Setup Passwordless SSH](ha-orchestration-setup/setup-passwordless-ssh.md)
+* [Master Orchestration Scripts](ha-orchestration-setup/master-orchestration-scripts.md)
+* [Manager Orchestration Scripts](ha-orchestration-setup/manager-orchestration-scripts.md)
 
 ## MariaDB
 
@@ -67,16 +74,6 @@
 ## Syncthing
 
 * [SyncThing Configuration](syncthing/syncthing-configuration.md)
-
-## HA Orchestration Setup
-
-* [Application Affected by HA](ha-orchestration-setup/application-affected-by-ha.md)
-* [Setup Passwordless SSH](ha-orchestration-setup/setup-passwordless-ssh.md)
-
-***
-
-* [Master Orchestration Scripts](master-orchestration-scripts.md)
-* [Manager Orchestration Scripts](manager-orchestration-scripts.md)
 
 ## BurgerLife API
 

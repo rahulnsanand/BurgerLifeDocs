@@ -136,7 +136,8 @@ else
         read -p "Enter Manager node's priority (e.g., 150): " current_node_priority
         # Manager needs nopreempt to hold VIP during failover until Master tells it to release
         additional_config="    nopreempt
-            notify_master \"/etc/keepalived/scripts/manager_start_apps_on_takeover.sh\""
+            notify_master \"/etc/keepalived/scripts/notify_master.sh\"
+            notify_backup \"/etc/keepalived/scripts/notify_backup.sh\""
         # You might also want notify_backup and notify_fault for comprehensive logging/actions
         # additional_config+="\\n    notify_backup \"/etc/keepalived/scripts/log_keepalived_state.sh BACKUP\""
         # additional_config+="\\n    notify_fault \"/etc/keepalived/scripts/log_keepalived_state.sh FAULT\""
